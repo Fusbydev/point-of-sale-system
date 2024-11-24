@@ -3,6 +3,7 @@ import './App.css';
 import { useEffect, useState } from 'react';
 import Login from './pages/login';
 import Homepage from './pages/homepage';
+import Register from './pages/register';
 
 function App() {
   const [isAuthenticated, setAuthenticated] = useState(false);
@@ -23,6 +24,9 @@ function App() {
             <Routes>
               {/* Login Route */}
               <Route path="/" element={<Login/>} />
+
+              {/* Register Route */}
+              <Route path="/register" element={<Register/>} />
               
               {/* Protected Homepage Route */}
               <Route

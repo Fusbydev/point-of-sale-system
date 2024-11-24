@@ -13,7 +13,7 @@ function Login() {
 
     const usernameC = 'admin';
     const passwordC = 'password';
-    
+
 
     const handleLogin = (e) => {
         e.preventDefault();
@@ -37,7 +37,7 @@ function Login() {
 
     return (
         <>
-            <div className="d-flex justify-content-center align-items-center main-login">
+            <div className="d-flex justify-content-center align-items-center main-login mx-2">
                 <div className="container p-4 rounded-5 login-form p-4 w shadow-lg">
                     <div className="row">
                         <div className="col-12">
@@ -64,18 +64,31 @@ function Login() {
                                         value={password}
                                         onChange={(e) => setPassword(e.target.value)}
                                     />
-                                    <p className="text-danger anim">{valid ? '' : 'Invalid username or password'}</p>
-                                    <p className="text-danger anim">{empty ? '' : 'Please input all fields'}</p>
+                                    <input type="checkbox" name="remember" id="remember" />
+                                    <label htmlFor="remember" className="ms-2 mt-1">Remember me</label>
+                                    <p className='text-center'>Don't have an account? <a href="/register">Register</a></p>
+                                    <p className="text-danger anim">
+                                        {valid ? '' : <>Invalid username or password! <i className="bi bi-exclamation-circle-fill"></i></>}
+                                    </p>
+                                    <p className="text-danger anim">
+                                        {empty ? '' : <>Please enter your username and password! <i className="bi bi-exclamation-circle-fill"></i></>}
+                                    </p>
                                 </div>
                                 <div className="row text-center">
                                     <p className="text-end text-primary">Forgot password?</p> {/*use `a` tag*/}
                                     <div className="col-12">
-                                        <button type="submit" className="submit px-4 mt-3" onClick={handleLogin}>LOG IN</button>
+                                        <button type="submit" className="submit px-4 mt-1" onClick={handleLogin}>LOG IN</button>
                                     </div>
                                 </div>
                             </form>
                         </div>
                     </div>
+                </div>
+            </div>
+            <div className="row">
+                <p className='text-white dev'>DEVELOPED BY AIKAWA</p>
+                <div className="col-12">
+                    <p className="text-center">Copyright © 2024. All rights reserved.</p>
                 </div>
             </div>
         </>
