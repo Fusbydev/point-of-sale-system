@@ -1,0 +1,66 @@
+.homepage-container {
+    display: flex;
+    position: relative;
+}
+
+.sidebar-cont {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 250px;
+    height: 100vh;
+    overflow-y: auto;
+    transition: transform 0.3s ease;
+}
+
+.product-container {
+    margin-left: 250px; /* Default sidebar width */
+    padding-top: 20px;
+    width: calc(100% - 250px); /* Default width, remaining space after sidebar */
+    height: 100vh;
+    z-index: 1000;
+    overflow-y: auto;
+    transition: width 0.3s ease, margin-left 0.3s ease;
+}
+
+.product-container.full-width {
+    margin-left: 65px; /* Adjust margin when sidebar is collapsed */
+    width: calc(100% - 65px); /* Take full width minus collapsed sidebar */
+}
+
+
+.row {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.col-lg-4, .col-md-6, .col-sm-12 {
+    padding: 0 15px;
+}
+
+.burger-menu {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    font-size: 30px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    z-index: 1100; /* Ensure it is above the sidebar */
+}
+
+@media (max-width: 767px) {
+    .sidebar-cont {
+        width: 100%;
+        position: absolute;
+        z-index: 1050;
+    }
+    .coll {
+        z-index: 2000;
+    }
+
+    .product-container {
+        margin-left: 0;
+        width: 100%;
+    }
+}

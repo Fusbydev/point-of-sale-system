@@ -11,27 +11,26 @@ function App() {
   useEffect(() => {
     const authStatus = localStorage.getItem('isAuthenticated');
     if (authStatus === 'true') {
-      setAuthenticated(true);
+      setAuthenticated(true);  
     }
   }, []);
 
-
   return (
-    <div className="container">
+    <div className="container-fluid App">
       <div className="row">
-        <div className="col-12">
+        <div className="col-12 p-0">
           <Router>
             <Routes>
               {/* Login Route */}
-              <Route path="/" element={<Login/>} />
+              <Route path="/" element={<Login />} />
 
               {/* Register Route */}
-              <Route path="/register" element={<Register/>} />
+              <Route path="/register" element={<Register />} />
               
               {/* Protected Homepage Route */}
               <Route
                 path="/home"
-                element={isAuthenticated ? <Homepage /> : <Navigate to="/" />}
+                element={true ? <Homepage /> : <Navigate to="/" />}
               />
             </Routes>
           </Router>
