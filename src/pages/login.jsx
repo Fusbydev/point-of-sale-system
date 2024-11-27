@@ -11,8 +11,8 @@ function Login() {
     const [valid, setValid] = useState(true);  // To handle username/password validation
     const [empty, setEmpty] = useState(true);  // To handle empty fields validation
 
-    const usernameC = 'admin';
-    const passwordC = 'password';
+    const usernameC = localStorage.getItem('username');
+    const passwordC = localStorage.getItem('password');
 
 
     const handleLogin = (e) => {
@@ -42,7 +42,7 @@ function Login() {
                     <div className="row">
                         <div className="col-12">
                             <h2 className="text-center mt-3">LOG IN</h2>
-                            <form className="row g-3">
+                            <form className="row">
                                 <div className="mb-3">
                                     <label htmlFor="exampleInputEmail1" className="form-label">Username</label>
                                     <input
@@ -64,15 +64,16 @@ function Login() {
                                         value={password}
                                         onChange={(e) => setPassword(e.target.value)}
                                     />
+                                    
+                                    <p className='text-center mt-2'>Don't have an account? <a href="/register">Register</a></p>
                                     <input type="checkbox" name="remember" id="remember" />
-                                    <label htmlFor="remember" className="ms-2 mt-1">Remember me</label>
-                                    <p className='text-center'>Don't have an account? <a href="/register">Register</a></p>
+                                    <label htmlFor="remember" className="ms-2">Remember me</label>
                                     <p className="text-danger anim">
                                         {valid ? '' : <>Invalid username or password! <i className="bi bi-exclamation-circle-fill"></i></>}
                                     </p>
                                     <p className="text-danger anim">
                                         {empty ? '' : <>Please enter your username and password! <i className="bi bi-exclamation-circle-fill"></i></>}
-                                    </p>
+                                    </p>    
                                 </div>
                                 <div className="row text-center">
                                     <p className="text-end text-primary">Forgot password?</p> {/*use `a` tag*/}
