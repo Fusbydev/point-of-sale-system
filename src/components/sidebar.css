@@ -26,6 +26,8 @@ body {
     transition: 0.3s ease;
     border-top-right-radius: 10px;
     border-bottom-right-radius: 10px;
+    padding: 0;
+    padding-top: 10px;
 }
 .expanded {
     transition: 0.3s ease;
@@ -126,3 +128,4 @@ ul li a:hover {
 .menu-item.center-icons a i {
     font-size: 1.5rem;
 }
+

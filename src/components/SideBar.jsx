@@ -1,20 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import "./sidebar.css";
+import { Link } from "react-router-dom";
 
 function SideBar({ sidebarVisible, toggleSidebar }) {
     const navigate = useNavigate();
     const [username, setUsername] = useState("");
 
     const [hoveredItem, setHoveredItem] = useState(null); // Track hovered menu item
-
-    const handleMouseEnter = (item) => {
-        setHoveredItem(item); // Set the hovered item
-    };
-
-    const handleMouseLeave = () => {
-        setHoveredItem(null); // Reset the hovered item when the mouse leaves
-    };
 
     console.log(sidebarVisible); // Debugging to confirm the value is passed
 
@@ -34,23 +27,30 @@ function SideBar({ sidebarVisible, toggleSidebar }) {
     return (
         <div className={`sidebar-container ${sidebarVisible ? "expanded" : "collapsed"}`}>
             <button onClick={toggleSidebar} className="toggle-btn">
-                <i className={`bi ${sidebarVisible ? "bi-chevron-left" : "bi-chevron-right"}`}></i>
+                <i className={`bi ${sidebarVisible ? "bi-chevron-left" : "bi-list"}`}></i>
             </button>
             <div className=" mb-2 text-center">
                 <img
-                    src="src/assets/profile/no-profile.png"
+                    src="src/assets/profile/jetpack.jpg"
                     alt="Profile"
                     className={`mx-auto ${sidebarVisible ? "profile-image" : "profile-image-collapsed"}`}
                 />
                 {sidebarVisible && <p className="mt-2 username">{username}</p>}
             </div>
             <ul>
+            <li className={`menu-item ${!sidebarVisible ? "center-icons" : ""}`}>
+                    <Link to="/home">
+                        <i className="bi bi-house-door-fill"></i>
+                        {sidebarVisible && " Home"}
+                    </Link>
+                </li>
                 <li className={`menu-item ${!sidebarVisible ? "center-icons" : ""}`}>
-                    <a href="#products">
+                    <Link to="/products">
                         <i className="bi bi-bag-fill"></i>
                         {sidebarVisible && " Products"}
-                    </a>
+                    </Link>
                 </li>
+
                 <li className={`menu-item ${!sidebarVisible ? "center-icons" : ""}`}>
                     <a href="#inventory">
                         <i className="bi bi-ui-checks"></i>

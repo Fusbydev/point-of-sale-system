@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 import Login from './pages/login';
 import Homepage from './pages/homepage';
 import Register from './pages/register';
+import Products from './pages/products';
 
 function App() {
   const [isAuthenticated, setAuthenticated] = useState(false);
@@ -31,6 +32,10 @@ function App() {
               <Route
                 path="/home"
                 element={true ? <Homepage /> : <Navigate to="/" />}
+              />
+              <Route
+                path="/products"
+                element={true ? <Products /> : <Navigate to="/" />}
               />
             </Routes>
           </Router>

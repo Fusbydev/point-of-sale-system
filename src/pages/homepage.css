@@ -7,7 +7,6 @@
     position: fixed;
     top: 0;
     left: 0;
-    width: 250px;
     height: 100vh;
     overflow-y: auto;
     transition: transform 0.3s ease;
@@ -51,12 +50,8 @@
 
 @media (max-width: 767px) {
     .sidebar-cont {
-        width: 100%;
         position: absolute;
         z-index: 1050;
-    }
-    .coll {
-        z-index: 2000;
     }
 
     .product-container {
