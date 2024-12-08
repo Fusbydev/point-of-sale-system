@@ -70,14 +70,14 @@ function Login() {
     };
 
     if (loading) {
-        return<div class="Parent-loading">
+        return<div className="Parent-loading">
 
-        <div class="loding-animation-holder">
-            <div class="loading-animator"></div>
-            <div class="loading-animator"></div>
-            <div class="loading-animator"></div>
-            <div class="loading-animator"></div>
-            <div class="middle-circle"></div>
+        <div className="loding-animation-holder">
+            <div className="loading-animator"></div>
+            <div className="loading-animator"></div>
+            <div className="loading-animator"></div>
+            <div className="loading-animator"></div>
+            <div className  ="middle-circle"></div>
         </div>
     </div>; // Show loading indicator while checking auth state
     }
