@@ -15,9 +15,7 @@ function Homepage() {
                 <SideBar sidebarVisible={sidebarVisible} toggleSidebar={toggleSidebar} />
             </div>
                 <div className={`row product-container ${sidebarVisible ? "" : "full-width coll"}`}>
-                    <div className="col-12">
-                        <h1>this is my homepage</h1>
-                    </div>
+                    <h1>Homepage</h1>
                 </div>
             </div>
         </>

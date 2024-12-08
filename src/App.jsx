@@ -31,11 +31,11 @@ function App() {
               {/* Protected Homepage Route */}
               <Route
                 path="/home"
-                element={true ? <Homepage /> : <Navigate to="/" />}
+                element={isAuthenticated ? <Homepage /> : <Navigate to="/" />}
               />
               <Route
                 path="/products"
-                element={true ? <Products /> : <Navigate to="/" />}
+                element={isAuthenticated ? <Products /> : <Navigate to="/" />}
               />
             </Routes>
           </Router>

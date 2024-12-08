@@ -16,7 +16,6 @@
     margin-left: 250px; /* Default sidebar width */
     padding-top: 20px;
     width: calc(100% - 250px); /* Default width, remaining space after sidebar */
-    height: 100vh;
     z-index: 1000;
     overflow-y: auto;
     transition: width 0.3s ease, margin-left 0.3s ease;
@@ -26,8 +25,6 @@
     margin-left: 65px; /* Adjust margin when sidebar is collapsed */
     width: calc(100% - 65px); /* Take full width minus collapsed sidebar */
 }
-
-
 .row {
     display: flex;
     flex-wrap: wrap;

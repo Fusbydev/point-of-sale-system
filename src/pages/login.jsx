@@ -1,38 +1,85 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { auth } from '../firebase'; // Import the auth service from firebase.js
+import { GoogleAuthProvider, signInWithPopup, onAuthStateChanged } from 'firebase/auth'; // Import necessary Firebase functions
 import './login.css';
 
 function Login() {
-
     const Navigate = useNavigate();
 
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
-    const [valid, setValid] = useState(true);  // To handle username/password validation
-    const [empty, setEmpty] = useState(true);  // To handle empty fields validation
+    const [valid, setValid] = useState(true);
+    const [empty, setEmpty] = useState(true);
+    const [loading, setLoading] = useState(true);
 
     const usernameC = localStorage.getItem('username');
     const passwordC = localStorage.getItem('password');
 
+    useEffect(() => {
+        // Check if the user is already authenticated
+        const unsubscribe = onAuthStateChanged(auth, (user) => {
+            if (user) {
+                // If a user is logged in with Google, redirect to home page
+                localStorage.setItem('isAuthenticated', 'true');
+                localStorage.setItem('user', JSON.stringify(user));
+                Navigate('/home');
+            } else {
+                setLoading(false); // Set loading to false once the auth state is checked
+            }
+        });
+
+        return () => unsubscribe();
+    }, [Navigate]);
 
     const handleLogin = (e) => {
         e.preventDefault();
 
-        // Check if both username and password are empty
         if (username === '' || password === '') {
             setEmpty(false);
-            setValid(true);  // Reset validation message for invalid username/password
-            return;  // Don't proceed with login if fields are empty
+            setValid(true);
+            return;
         }
 
-        // Check if username and password match the correct credentials
         if (username === usernameC && password === passwordC) {
-            localStorage.setItem('isAuthenticated', true);  // Set authentication flag
-            Navigate('/home');  // Navigate to home page on successful login
+            localStorage.setItem('isAuthenticated', 'true');
+            localStorage.setItem('userFromForm', JSON.stringify({ username: username }));
+            Navigate('/home');
         } else {
-            setValid(false);  // Show invalid credentials error
-            setEmpty(true);   // Reset empty field error
+            setValid(false);
+            setEmpty(true);
         }
+    };
+
+    // Google Sign-In
+    const handleGoogleLogin = async () => {
+        try {
+            const provider = new GoogleAuthProvider();
+            const result = await signInWithPopup(auth, provider);
+            const user = result.user;
+
+            // Store user data in localStorage
+            localStorage.setItem('user', JSON.stringify(user));
+            localStorage.setItem('isAuthenticated', 'true');
+
+            // Navigate to the homepage
+            Navigate('/home');
+        } catch (error) {
+            console.error(error);
+        }
+    };
+
+    if (loading) {
+        return<div class="Parent-loading">
+
+        <div class="loding-animation-holder">
+            <div class="loading-animator"></div>
+            <div class="loading-animator"></div>
+            <div class="loading-animator"></div>
+            <div class="loading-animator"></div>
+            <div class="middle-circle"></div>
+        </div>
+    </div>; // Show loading indicator while checking auth state
     }
 
     return (
@@ -64,7 +111,6 @@ function Login() {
                                         value={password}
                                         onChange={(e) => setPassword(e.target.value)}
                                     />
-                                    
                                     <p className='text-center mt-2'>Don't have an account? <a href="/register">Register</a></p>
                                     <input type="checkbox" name="remember" id="remember" />
                                     <label htmlFor="remember" className="ms-2">Remember me</label>
@@ -73,15 +119,22 @@ function Login() {
                                     </p>
                                     <p className="text-danger anim">
                                         {empty ? '' : <>Please enter your username and password! <i className="bi bi-exclamation-circle-fill"></i></>}
-                                    </p>    
+                                    </p>
                                 </div>
                                 <div className="row text-center">
-                                    <p className="text-end text-primary">Forgot password?</p> {/*use `a` tag*/}
+                                    <p className="text-end text-primary">Forgot password?</p>
                                     <div className="col-12">
                                         <button type="submit" className="submit px-4 mt-1" onClick={handleLogin}>LOG IN</button>
                                     </div>
                                 </div>
                             </form>
+                            {/* Google Login Button */}
+                            <div className="google-login mt-3">
+                                <button className="google-btn d-flex justify-content-center align-items-center" onClick={handleGoogleLogin}>
+                                    <i className="bi bi-google"></i>
+                                    <span className="ms-2">Login with Google</span>
+                                </button>
+                            </div>
                         </div>
                     </div>
                 </div>

@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import SideBar from "../components/SideBar";
 import ProductCard from "../components/ProductCards";
+import "./products.css";
 import "./homepage.css";
 
 function Products() {
@@ -69,11 +70,60 @@ function Products() {
     return (
         <>
             <div className="homepage-container d-flex">
-            <div className={`sidebar-cont ${sidebarVisible ? "visible" : "hidden"}`}>
-                <SideBar sidebarVisible={sidebarVisible} toggleSidebar={toggleSidebar} />
-            </div>
+                <div className={`sidebar-cont ${sidebarVisible ? "visible" : "hidden"}`}>
+                    <SideBar sidebarVisible={sidebarVisible} toggleSidebar={toggleSidebar} />
+                </div>
                 <div className={`row product-container ${sidebarVisible ? "" : "full-width coll"}`}>
-                    <h1>Products we offer</h1>
+                    <h1>Aikamers POS</h1>
+                    {/* put a searchbar using bootstrap */}
+                    <div className="row mb-0">
+                        <div className="col-12">
+                            <form action="">
+                                <div className="row align-items-center">
+                                    <div className="col-md-8 col-12 ">
+                                        <div className="input-group w-100">
+                                            <input
+                                                type="text"
+                                                placeholder="Search for a product..."
+                                                className="form-control h-50"
+                                                aria-label="Search"
+                                            />
+                                            <button type="submit" className="btn btn-primary h-50 search">
+                                                <i className="bi bi-search"></i> Search
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <div className="col-md-4 col-12">
+                                        <div className="justify-content-between">
+                                            <div className="dropdown">
+                                            <button
+                                                className="btn btn-primary dropdown-toggle ddown"
+                                                type="button"
+                                                data-bs-toggle="dropdown"
+                                                aria-expanded="false"
+                                            >
+                                                Categories
+                                            </button>
+                                            <ul className="dropdown-menu">
+                                                <li>
+                                                    <a className="dropdown-item" href="#">
+                                                        dropdown is based on the users products
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a className="dropdown-item" href="#">
+                                                        dropdown is based on the users products
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+
                     <div className="col-12">
                         <div className="row">
                             {products.map((product, index) => (

@@ -1,0 +1,22 @@
+.dropdown-item {
+    font-size:1rem;
+}
+
+.ddown, .search {
+    background: linear-gradient(135deg, #24d02a, #6bff70);
+    border: none;
+}
+
+.ddown:hover, .search:hover{
+    background: linear-gradient(135deg, #24d02a,  #6bff70);
+    border: none;
+}
+
+@media screen and (max-width: 768px) {
+    .search {
+        margin-bottom: 10px;
+    }
+    .ddwon {
+        margin-bottom: 10px;
+    }
+}

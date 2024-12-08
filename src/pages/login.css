@@ -2,6 +2,7 @@
 
 body {
     font-family: 'Poppins', sans-serif;
+    overflow-x: hidden;
 }
 .container {
     width:auto;
@@ -63,3 +64,180 @@ h2, label {
 i.bi-exclamation-circle-fill {
     color: #ff9500;
 }
+
+.email-message {
+    background-color: #88ff8c; /* Example background */
+    padding: 5px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.email-sent {
+    font-size: 16px;
+    color: #343a40; /* Example text color */
+    margin: 0; /* Remove extra margin */
+}
+
+.email-message button {
+    background: none;
+    border: none;
+    font-size: 25px;
+    cursor: pointer;
+    color: #1E1E1E; /* Example close button color */
+}
+
+.email-message button:hover {
+    color: #b02a37; /* Example hover color */
+}
+
+.email-message.hidden {
+    display: none;
+}
+
+.email-message.visible {
+    display: flex; /* Maintain flex layout when visible */
+}
+
+.auth-fire a {
+    text-decoration: none;
+    color: #1E1E1E;
+    font-weight: bold;
+    transition: color 0.3s ease;
+    font-size: 20px;
+}
+.google-btn {
+    background-color: #4285F4;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 50px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  
+  .google-btn:hover {
+    background-color: #357ae8;
+  }
+  
+  .google-btn .google-icon {
+    width: 20px;
+    height: 20px;
+  }
+  
+  .google-btn span {
+    font-weight: bold;
+  }
+  
+  .google-btn:focus {
+    outline: none;
+  }
+  
+  .google-btn:active {
+    transform: scale(0.98);
+  }
+
+  
+
+.Parent-loading{
+    display:block;
+    width: 100%; height:100%;
+    position: absolute;
+    top:0px; left:0px;
+    z-index: 100;
+    background: none;
+    opacity: 1;
+    display: flex;
+    justify-content:center;
+    align-items: center;
+    -webkit-transition: opacity 1s cubic-bezier(.83,.01,.75,.71);
+    -moz-transition: opacity 1s cubic-bezier(.83,.01,.75,.71);
+    -ms-transition: opacity 1s cubic-bezier(.83,.01,.75,.71);
+    -o-transition: opacity 1s cubic-bezier(.83,.01,.75,.71);
+    transition: opacity 1s cubic-bezier(.83,.01,.75,.71);
+}
+
+.loding-animation-holder{
+    width: 100px; height:100px;
+    transform:rotate(45deg);
+    position: relative;
+}
+
+.loading-animator{
+    width: 50%; height:50%;
+    float:left;
+    border-radius: 50%;
+    background: #c4b422e3;
+    transform:rotate(0deg);
+    position:relative;
+    top:0px; left:0px;
+    bottom:0px; right:0px;
+    opacity: 1;
+}
+
+.loading-animator:nth-child(1){
+    transform-origin: bottom right;
+    animation:loading 3s cubic-bezier(.46,-0.1,.2,1.5) infinite;
+}
+
+.loading-animator:nth-child(2){
+    transform-origin: bottom left;
+    animation:loading 3s 0.3s cubic-bezier(.46,-0.1,.2,1.5) infinite;
+}
+
+.loading-animator:nth-child(4){
+    transform-origin: top left;
+    animation:loading 3s 0.4s cubic-bezier(.46,-0.1,.2,1.5) infinite;
+}
+
+.loading-animator:nth-child(3){
+    transform-origin: top right;
+    animation:loading 3s 0.5s cubic-bezier(.46,-0.1,.2,1.5) infinite;
+}
+
+@keyframes loading {
+    0%{
+        transform:rotate(0deg);
+        opacity: 1;
+    }
+    25%{
+        transform:rotate(90deg);
+        opacity: 0;
+    }
+    35%{
+        transform:rotate(-90deg);
+        opacity:0;
+    }
+    65%{
+        transform:rotate(0deg);
+        opacity: 1;
+    }
+}
+
+.middle-circle{
+    width: 5px; height: 5px;
+    position: absolute;
+    top:47.5px; left:47.5px;
+    border-radius: 100%;
+    border:1px solid #000;
+    background: #FFEB3B;
+}
+.Parent-loading .lod h1
+{
+    color: #fff;
+    margin-left: 60px;
+    font-family: fantasy;
+    font-weight: normal;
+}
+.Parent-loading .lod span
+{
+    color: #fff;
+    margin-left: 80px;
+    font-size:14px;
+}
+
+  
